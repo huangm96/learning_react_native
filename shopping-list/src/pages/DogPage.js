@@ -18,8 +18,14 @@ const DogPage = ({ route, navigation }) => {
          .get(
            `https://en.wikipedia.org/w/api.php?format=json&explaintext&prop=extracts&explaintext&exintro&action=query&list=search&srsearch=${breedName}%20dog`
          )
-         .then((res) => {
-             setDesc(res.data.query.search[0].snippet)
+           .then((res) => {
+               console.log(res)
+               if (res.data.query.search.length ===0) {
+                 setDesc("No Description");
+               } else {
+                   setDesc(res.data.query.search[0].snippet);
+             }
+               
          });
   }, []);
 
