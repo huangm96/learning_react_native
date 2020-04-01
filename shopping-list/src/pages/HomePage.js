@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import LottieView from "lottie-react-native";
 import axios from "axios";
-const HomePage = ({navigation}) => {
+const HomePage = ({ navigation }) => {
   const [breeds, setBreeds] = useState({});
   axios.get("https://dog.ceo/api/breeds/list/all").then(({ data }) => {
     const breedsObject = data.message;
@@ -37,16 +37,19 @@ const HomePage = ({navigation}) => {
           style={{ width: 150, height: 150 }}
         />
       </View>
-      <View style={{ flex: 4 , flexDirection:"row"}}>
-              <FlatList
-                  style={{flex:1}}
+      <View style={{ flex: 4, flexDirection: "row" }}>
+        <FlatList
+                  style={{ flex: 1 }}
+                  keyExtractor={(item, index) => {
+                      return 'dog-'+index
+                  }}
           data={Object.keys(breeds)}
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
-                    style={{ flex: 1, padding:10 }}
+                style={{ flex: 1, padding: 10 }}
                 onPress={() => {
-                  navigation.navigate("DogPage"),{breed:breeds[item]};
+                  navigation.navigate("DogPage", { breed: breeds[item] });
                 }}
               >
                 <Text>{breeds[item]}</Text>

@@ -19,7 +19,8 @@ function MyStack() {
       <Stack.Screen
         name="DogPage"
         component={DogPage}
-        options={{ headerShown: true }}
+        options={
+          ({ route }) => ({ title: route.params.breed })}
       />
     </Stack.Navigator>
   );
