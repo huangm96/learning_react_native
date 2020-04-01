@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
       <Stack.Screen
         name="Home"
         component={HomePage}
@@ -19,8 +19,7 @@ function MyStack() {
       <Stack.Screen
         name="DogPage"
         component={DogPage}
-        options={
-          ({ route }) => ({ title: route.params.breed })}
+        options={({ route }) => ({ title: route.params.breed })}
       />
     </Stack.Navigator>
   );
